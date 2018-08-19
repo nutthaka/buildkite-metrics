@@ -10,6 +10,8 @@ BK_ACCESS_TOKEN = ""
 BK_GRAPHQL_URL = "https://graphql.buildkite.com/v1"
 BK_HEADERS = {'Authorization': 'Bearer ' + BK_ACCESS_TOKEN}
 
+date_tuples = get_date_tuples(7)
+
 query_template = Template('{ organization(slug: "") { pipelines(first: 500) { edges { node { name, builds(createdAtFrom: "$createdFrom", createdAtTo:"$createdTo") { count } } } } } }')
 
 GRAPHQL_DATA_1 = {"query": query_template.substitute(createdFrom="2018-08-16T08:00+10", createdTo="2018-08-17T08:00+10")}
@@ -31,4 +33,8 @@ for (i, request_body) in enumerate(list_of_request_body):
     output_template = Template('$day,$count')
     print(output_template.substitute(day=str(i+1), count=str(total_builds)))
 
-    
+# sort_key = lambda t: (t[1], t[0])
+# sorted_pipelines = sorted(iteritems(build_dict), key=sort_key)
+
+# for key, value in sorted_pipelines:
+#     print("%s: %s" % (key, value))    

@@ -1,3 +1,4 @@
 env
 .vscode
 *.csv
+__pycache__/
