@@ -2,3 +2,5 @@ env
 .vscode
 *.csv
 __pycache__/
+config.env
+*.txt
